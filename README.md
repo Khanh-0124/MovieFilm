@@ -1,5 +1,6 @@
 # MovieFilm
 
+
 ## Run Locally
 
 Clone the project
@@ -18,7 +19,9 @@ Install dependencies
 
 ```bash
   npm install
-  or 
+```
+or
+```bash
   yarn install
 ```
 Start the server
@@ -32,6 +35,9 @@ Run android
 
 ```bash
   npx react-native run-android
-  or 
+```
+or
+```bash
   yarn android
 ```
+
