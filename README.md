@@ -1,6 +1,6 @@
 # MovieFilm
 
-
+![Logo](https://media.lottecinemavn.com/Media/MovieFile/MovieImg/202205/10769_105_100012.jpg)
 ## Run Locally
 
 Clone the project
