@@ -3,6 +3,7 @@
 ![Logo](https://media.lottecinemavn.com/Media/MovieFile/MovieImg/202205/10769_105_100012.jpg)
 ## Run Locally
 `react native version 0.68.2`
+
 Clone the project
 
 ```bash
