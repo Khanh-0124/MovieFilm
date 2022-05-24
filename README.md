@@ -23,8 +23,4 @@ Start the server
 ```
 
 Run android use command `npx react-native run-android` or `yarn android`
-## Tech Stack
 
-**Client:** React Native
-
-**Server:** FireBase
