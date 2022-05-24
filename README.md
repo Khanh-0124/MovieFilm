@@ -11,40 +11,17 @@ Clone the project
 
 Go to the project directory
 
-```bash
-  cd MovieApp
-```
+`cd MovieApp`
 
-Install dependencies
+Install dependencies using `npm install`  or `yarn install`
 
-```bash
-  npm install
-```
-or
-```bash
-  yarn install
-```
 Start the server
 
 ```bash
   npm run start
 ```
 
-Run android
-
-
-```bash
-  npx react-native run-android
-```
-or
-```bash
-  yarn android
-```
-## Tech Stack
-
-**Client:** React, Redux, TailwindCSS
-
-**Server:** Node, Express
+Run android use command `npx react-native run-android` or `yarn android`
 ## Tech Stack
 
 **Client:** React Native
