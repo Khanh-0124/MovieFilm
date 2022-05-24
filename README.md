@@ -40,4 +40,13 @@ or
 ```bash
   yarn android
 ```
+## Tech Stack
 
+**Client:** React, Redux, TailwindCSS
+
+**Server:** Node, Express
+## Tech Stack
+
+**Client:** React Native
+
+**Server:** FireBase
