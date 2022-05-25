@@ -5,18 +5,23 @@ import {
   Image,
   Dimensions,
   ScrollView,
+  ToastAndroid,
   TouchableOpacity,
 } from 'react-native';
-import React from 'react';
+import React, {useState, createContext} from 'react';
 import {useRoute} from '@react-navigation/native';
 import {Button, Icon} from 'react-native-elements';
+import {FavoriteFilm} from '../screens/Index';
 
 const dimensions = Dimensions.get('screen');
+export const context = createContext();
 
 const Details = props => {
   const route = useRoute().params;
   const {navigation} = props;
   const url_poster = 'https://image.tmdb.org/t/p/w500';
+  const [favorite, setFavorite] = useState(true);
+
   return (
     <ScrollView style={styles.container}>
       <Image
@@ -43,10 +48,20 @@ const Details = props => {
         />
         <Icon
           raised
-          name="favorite"
+          name={favorite ? 'favorite-border' : 'favorite'}
           type="material"
           color="#f50"
-          onPress={() => alert('Đã thêm vào mục yêu thích')}
+          onPress={() => {
+            ToastAndroid.showWithGravity(
+              favorite
+                ? 'Đã thêm vào mục yêu thích'
+                : 'Đã xoá khỏi mục yêu thích',
+              ToastAndroid.SHORT,
+              ToastAndroid.BOTTOM,
+              navigation.navigate('FavoriteFilm', {item: favorite}),
+            );
+            setFavorite(!favorite);
+          }}
         />
       </View>
       <View style={styles.viewContent}>
