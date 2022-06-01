@@ -1,6 +1,6 @@
 # MovieFilm
 
-![Logo]('./src/assets/avt.jpg)
+![Logo]('.\src\assets\avt.jpg')
 
 ## Run Locally
 
