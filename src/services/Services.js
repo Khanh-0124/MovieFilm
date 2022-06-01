@@ -27,5 +27,10 @@ export const getTV = async () => {
   const resp = await axios.get(`${apiUrl}/tv/airing_today?api_key=${apiKey}`);
   return resp.data.results;
 };
-
-const styles = StyleSheet.create({});
+//search movie popular
+export const searchMoviePopular = async (query, type) => {
+  const resp = await axios.get(
+    `${apiUrl}/search/${type}?api_key=${apiKey}&query=${query}`,
+  );
+  return resp.data.results;
+};

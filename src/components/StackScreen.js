@@ -1,6 +1,6 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import {Home, Details, Movie, FavoriteFilm} from '../screens/Index';
+import {Home, Details, Movie, FavoriteFilm, Search} from '../screens/Index';
 
 const Stack = createStackNavigator();
 
@@ -31,6 +31,13 @@ const StackScreen = () => {
       <Stack.Screen
         name="FavoriteFilm"
         component={FavoriteFilm}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Search"
+        component={Search}
         options={{
           headerShown: false,
         }}

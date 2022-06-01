@@ -9,7 +9,7 @@ const FavoriteFilm = props => {
 
   return (
     <View>
-      <Text>{route.item.toString()}</Text>
+      {/* <Text>{route.item.toString()}</Text> */}
       <Text>FavoriteFilm</Text>
     </View>
   );

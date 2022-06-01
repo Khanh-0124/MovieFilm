@@ -1,4 +1,12 @@
-import {StyleSheet, Text, View, Dimensions, ScrollView} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Dimensions,
+  ScrollView,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import {
   getPopularMovies,
@@ -7,7 +15,10 @@ import {
   getTV,
 } from '../services/Services';
 import {SliderBox} from 'react-native-image-slider-box';
+import {Icon} from 'react-native-elements';
 import List from '../components/List';
+import {Search} from '../screens/Index';
+
 const dimensions = Dimensions.get('screen');
 const Home = ({navigation}) => {
   const [popular, setPopular] = useState([]);
@@ -54,6 +65,39 @@ const Home = ({navigation}) => {
           resizeMode={'cover'}
           sliderBoxHeight={dimensions.height / 1.75}
         />
+        <View
+          style={{
+            position: 'absolute',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            width: '100%',
+            top: 10,
+            paddingHorizontal: 10,
+          }}>
+          <View
+            style={{
+              width: 60,
+              height: 60,
+              backgroundColor: '#fff',
+              justifyContent: 'center',
+              alignItems: 'center',
+              borderRadius: 40,
+            }}>
+            <Image
+              source={require('../assets/logo.png')}
+              style={{
+                // backgroundColor: 'pink',
+                height: 40,
+                width: 40,
+              }}
+            />
+          </View>
+          <TouchableOpacity onPress={() => navigation.navigate('Search', {})}>
+            <Icon name="search" raised color={'#0496ff'} />
+          </TouchableOpacity>
+        </View>
+
         <List title={'Phim phổ biến'} content={popular} />
         <List title={'Sắp công chiếu'} content={upcoming} />
         <List title={'Top Trending ngày'} content={trending} />

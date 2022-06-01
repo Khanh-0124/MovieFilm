@@ -3,5 +3,6 @@ import Details from './Details';
 import Movie from './Movie';
 import FavoriteFilm from './FavoriteFilm';
 import Profile from './Profile';
+import Search from './Search';
 
-export {Home, Details, Movie, FavoriteFilm, Profile};
+export {Home, Details, Movie, FavoriteFilm, Profile, Search};
