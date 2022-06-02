@@ -12,8 +12,10 @@ import {
   DrawerContentScrollView,
   DrawerItemList,
 } from '@react-navigation/drawer';
+import {useNavigation} from '@react-navigation/native';
 
 const CustomDrawer = props => {
+  const navigation = useNavigation();
   return (
     <View style={{flex: 1}}>
       <DrawerContentScrollView
@@ -91,6 +93,7 @@ const CustomDrawer = props => {
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
+          onPress={() => navigation.navigate('SignIn')}
           style={{
             flexDirection: 'row',
             alignItems: 'center',

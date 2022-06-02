@@ -5,10 +5,12 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   TouchableOpacity,
+  Image,
 } from 'react-native';
 import React from 'react';
 import {Colors} from '../../global/Styles';
 import FormInput from '../../components/FormInput';
+import {Icon} from 'react-native-elements';
 
 const SignInScreen = props => {
   const {navigation} = props;
@@ -24,19 +26,43 @@ const SignInScreen = props => {
         <View style={styles.input}>
           <FormInput placeholder="Mật khẩu" />
         </View>
-        <View style={styles.input}>
-          <FormInput placeholder="Xác nhận mật khẩu" />
-        </View>
         <View>
           <Text style={styles.txtForgetPass}>Quên mật khẩu?</Text>
         </View>
-        <TouchableOpacity style={styles.btn}>
-          <Text style={{color: Colors.white, fontSize: 17}}>Đăng ký</Text>
+        <TouchableOpacity
+          style={styles.btn}
+          onPress={() => navigation.navigate('Home')}>
+          <Text style={{color: Colors.white, fontSize: 17}}>Đăng nhập</Text>
         </TouchableOpacity>
+        <View
+          style={{
+            height: 1,
+            backgroundColor: Colors.primary,
+            width: '60%',
+            alignSelf: 'center',
+          }}
+        />
+        <Text style={[styles.txt1, {textAlign: 'center', marginVertical: 10}]}>
+          Hoặc
+        </Text>
+        <View style={styles.viewImage}>
+          <TouchableOpacity>
+            <Image
+              source={require('../../assets/search.png')}
+              style={styles.image}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Image
+              source={require('../../assets/facebook.png')}
+              style={styles.image}
+            />
+          </TouchableOpacity>
+        </View>
         <View style={styles.txtFooter}>
           <Text style={styles.txt1}>Bạn đã có tài khoản? </Text>
           <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
-            <Text style={styles.txt2}>Đăng nhập</Text>
+            <Text style={styles.txt2}> Đăng ký</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -56,7 +82,7 @@ const styles = StyleSheet.create({
     color: Colors.primary,
     fontWeight: '800',
     textAlign: 'center',
-    marginTop: 100,
+    marginTop: 70,
     marginBottom: 30,
   },
   input: {
@@ -77,7 +103,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',
-    marginTop: 40,
+    marginTop: 20,
+    marginBottom: 20,
   },
   txtFooter: {
     flexDirection: 'row',
@@ -96,7 +123,17 @@ const styles = StyleSheet.create({
     color: Colors.primary,
     textAlign: 'center',
     fontSize: 15,
-    marginTop: 30,
+    marginTop: 20,
     textDecorationLine: 'underline',
+  },
+  image: {
+    width: 40,
+    height: 40,
+    marginHorizontal: 20,
+  },
+  viewImage: {
+    marginTop: 10,
+    flexDirection: 'row',
+    justifyContent: 'center',
   },
 });
