@@ -1,12 +1,34 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import {Home, Details, Movie, FavoriteFilm, Search} from '../screens/Index';
+import {
+  Home,
+  Details,
+  Movie,
+  FavoriteFilm,
+  Search,
+  SignUpScreen,
+  SignInScreen,
+} from '../screens/Index';
 
 const Stack = createStackNavigator();
 
 const StackScreen = () => {
   return (
     <Stack.Navigator>
+      <Stack.Screen
+        name="SignIn"
+        component={SignInScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="SignUp"
+        component={SignUpScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
       <Stack.Screen
         name="Home"
         component={Home}

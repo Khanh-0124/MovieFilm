@@ -4,5 +4,16 @@ import Movie from './Movie';
 import FavoriteFilm from './FavoriteFilm';
 import Profile from './Profile';
 import Search from './Search';
+import SignInScreen from './Auth/SignInScreen';
+import SignUpScreen from './Auth/SignUpScreen';
 
-export {Home, Details, Movie, FavoriteFilm, Profile, Search};
+export {
+  Home,
+  Details,
+  Movie,
+  FavoriteFilm,
+  Profile,
+  Search,
+  SignInScreen,
+  SignUpScreen,
+};
