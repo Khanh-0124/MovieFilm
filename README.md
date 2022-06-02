@@ -6,7 +6,6 @@
 
 
 ## API Reference
-## API Reference
 
 #### TMDB
 
