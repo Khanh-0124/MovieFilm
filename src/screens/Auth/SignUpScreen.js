@@ -7,24 +7,46 @@ import {
   TouchableOpacity,
   Image,
 } from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import {Colors} from '../../global/Styles';
 import FormInput from '../../components/FormInput';
+import {Icon} from 'react-native-elements';
 
 const SignUpScreen = props => {
   const {navigation} = props;
+  const [showPass, setShow] = useState(true);
+
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={styles.container}>
         <Text style={styles.title}>Đăng ký</Text>
         <View style={styles.input}>
-          <FormInput placeholder="Email đăng nhập" />
+          <Icon name="email" style={styles.emailIcon} />
+          <FormInput placeholder="Email đăng nhập" width={210} />
         </View>
         <View style={styles.input}>
-          <FormInput placeholder="Mật khẩu" />
+          <Icon name="lock" style={[styles.emailIcon]} />
+
+          <FormInput
+            placeholder="Mật khẩu"
+            width={187}
+            secureTextEntry={showPass}
+          />
+          <TouchableOpacity onPress={() => setShow(!showPass)}>
+            <Icon
+              name={showPass ? 'eye-outline' : 'eye-off-outline'}
+              type="ionicon"
+              style={[styles.showPass]}
+            />
+          </TouchableOpacity>
         </View>
         <View style={styles.input}>
-          <FormInput placeholder="Xác nhận mật khẩu" />
+          <Icon name="lock" style={styles.emailIcon} />
+          <FormInput
+            placeholder="Xác nhận mật khẩu"
+            width={215}
+            secureTextEntry={showPass}
+          />
         </View>
         <TouchableOpacity style={styles.btn}>
           <Text style={{color: Colors.white, fontSize: 17}}>Đăng ký</Text>
@@ -90,6 +112,9 @@ const styles = StyleSheet.create({
     paddingLeft: 15,
     shadowColor: '#000',
     elevation: 11,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingRight: 18,
   },
   btn: {
     width: '70%',
@@ -105,7 +130,9 @@ const styles = StyleSheet.create({
   txtFooter: {
     flexDirection: 'row',
     marginTop: 30,
-    justifyContent: 'center',
+    alignSelf: 'center',
+    position: 'absolute',
+    bottom: 20,
   },
   txt1: {
     fontSize: 15,
@@ -131,5 +158,21 @@ const styles = StyleSheet.create({
     marginTop: 10,
     flexDirection: 'row',
     justifyContent: 'center',
+  },
+  showPass: {
+    top: 10,
+    width: 35,
+    height: 35,
+  },
+  emailIcon: {
+    top: 12,
+    marginRight: 5,
+    width: 25,
+    height: 35,
+  },
+  passIcon: {
+    top: 12,
+
+    // marginRight: 5,
   },
 });

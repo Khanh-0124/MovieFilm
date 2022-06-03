@@ -5,7 +5,11 @@ const FormInput = props => {
   const {placeholder, ...more} = props;
   return (
     <View>
-      <TextInput placeholder={placeholder} style={{width: more.width}} />
+      <TextInput
+        placeholder={placeholder}
+        style={{width: more.width}}
+        secureTextEntry={more.secureTextEntry}
+      />
     </View>
   );
 };

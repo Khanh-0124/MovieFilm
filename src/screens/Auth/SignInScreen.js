@@ -7,13 +7,14 @@ import {
   TouchableOpacity,
   Image,
 } from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import {Colors} from '../../global/Styles';
 import FormInput from '../../components/FormInput';
 import {Icon} from 'react-native-elements';
 
 const SignInScreen = props => {
   const {navigation} = props;
+  const [showPass, setShow] = useState(true);
   // const {login} = useContext(AuthProvider);
 
   return (
@@ -21,10 +22,23 @@ const SignInScreen = props => {
       <View style={styles.container}>
         <Text style={styles.title}>Đăng nhập</Text>
         <View style={styles.input}>
-          <FormInput placeholder="Email đăng nhập" />
+          <Icon name="email" style={styles.emailIcon} />
+          <FormInput placeholder="Email đăng nhập" width={215} />
         </View>
         <View style={styles.input}>
-          <FormInput placeholder="Mật khẩu" />
+          <Icon name="lock" style={styles.emailIcon} />
+          <FormInput
+            placeholder="Mật khẩu"
+            secureTextEntry={showPass}
+            width={190}
+          />
+          <TouchableOpacity onPress={() => setShow(!showPass)}>
+            <Icon
+              name={showPass ? 'eye-outline' : 'eye-off-outline'}
+              type="ionicon"
+              style={styles.showPass}
+            />
+          </TouchableOpacity>
         </View>
         <View>
           <Text style={styles.txtForgetPass}>Quên mật khẩu?</Text>
@@ -94,6 +108,9 @@ const styles = StyleSheet.create({
     paddingLeft: 15,
     shadowColor: '#000',
     elevation: 11,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingRight: 18,
   },
   btn: {
     width: '70%',
@@ -109,7 +126,11 @@ const styles = StyleSheet.create({
   txtFooter: {
     flexDirection: 'row',
     marginTop: 30,
-    justifyContent: 'center',
+    xDirection: 'row',
+    marginTop: 30,
+    alignSelf: 'center',
+    position: 'absolute',
+    bottom: 20,
   },
   txt1: {
     fontSize: 15,
@@ -135,5 +156,18 @@ const styles = StyleSheet.create({
     marginTop: 10,
     flexDirection: 'row',
     justifyContent: 'center',
+  },
+  showPass: {
+    top: 10,
+    width: 35,
+    height: 35,
+  },
+  emailIcon: {
+    top: 12,
+    marginRight: 5,
+  },
+  passIcon: {
+    top: 12,
+    // marginRight: 5,
   },
 });
