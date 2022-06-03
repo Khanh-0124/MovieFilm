@@ -8,14 +8,14 @@
 
 ## API Reference
 
-#### TMDB
+### TMDB
 
-```http
-  themoviedb.org/?language=vi
+```bash
+  https://www.themoviedb.org/?language=vi
 ```
-#### 2Embed
-```http
-  2embed.ru
+### 2Embed
+```bash
+  https://www.2embed.ru/
 ```
 
 ## Run Locally
