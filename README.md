@@ -11,11 +11,11 @@
 #### TMDB
 
 ```http
-  https://www.themoviedb.org/?language=vi
+  themoviedb.org/?language=vi
 ```
 #### 2Embed
 ```http
-  https://www.2embed.ru/
+  2embed.ru
 ```
 
 ## Run Locally
