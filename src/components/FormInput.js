@@ -9,6 +9,8 @@ const FormInput = props => {
         placeholder={placeholder}
         style={{width: more.width}}
         secureTextEntry={more.secureTextEntry}
+        value={more.value}
+        onChangeText={more.onChangeText}
       />
     </View>
   );

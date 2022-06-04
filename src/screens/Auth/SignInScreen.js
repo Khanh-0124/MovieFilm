@@ -11,6 +11,7 @@ import React, {useState} from 'react';
 import {Colors} from '../../global/Styles';
 import FormInput from '../../components/FormInput';
 import {Icon} from 'react-native-elements';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 const SignInScreen = props => {
   const {navigation} = props;
@@ -19,7 +20,7 @@ const SignInScreen = props => {
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <View style={styles.container}>
+      <KeyboardAwareScrollView style={styles.container}>
         <Text style={styles.title}>Đăng nhập</Text>
         <View style={styles.input}>
           <Icon name="email" style={styles.emailIcon} />
@@ -79,7 +80,7 @@ const SignInScreen = props => {
             <Text style={styles.txt2}> Đăng ký</Text>
           </TouchableOpacity>
         </View>
-      </View>
+      </KeyboardAwareScrollView>
     </TouchableWithoutFeedback>
   );
 };
@@ -127,10 +128,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginTop: 30,
     xDirection: 'row',
-    marginTop: 30,
+    marginTop: 90,
     alignSelf: 'center',
-    position: 'absolute',
-    bottom: 20,
   },
   txt1: {
     fontSize: 15,

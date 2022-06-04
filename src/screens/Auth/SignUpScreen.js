@@ -7,22 +7,42 @@ import {
   TouchableOpacity,
   Image,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Colors} from '../../global/Styles';
 import FormInput from '../../components/FormInput';
 import {Icon} from 'react-native-elements';
+import auth from '@react-native-firebase/auth';
 
 const SignUpScreen = props => {
   const {navigation} = props;
   const [showPass, setShow] = useState(true);
+  const [email, setEmail] = useState('');
+  const [pass, setPass] = useState('');
 
+  const submit = (email, pass) => {
+    auth()
+      .createUserWithEmailAndPassword(email, pass)
+      .then(user => {
+        // const User = user.user;
+        // console.log(User.email);
+        alert({email});
+      })
+      .catch(e => {
+        alert(e);
+      });
+  };
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={styles.container}>
         <Text style={styles.title}>Đăng ký</Text>
         <View style={styles.input}>
           <Icon name="email" style={styles.emailIcon} />
-          <FormInput placeholder="Email đăng nhập" width={210} />
+          <FormInput
+            placeholder="Email đăng nhập"
+            width={210}
+            value={email}
+            onChangeText={a => setEmail(a)}
+          />
         </View>
         <View style={styles.input}>
           <Icon name="lock" style={[styles.emailIcon]} />
@@ -31,6 +51,8 @@ const SignUpScreen = props => {
             placeholder="Mật khẩu"
             width={187}
             secureTextEntry={showPass}
+            value={pass}
+            onChangeText={a => setPass(a)}
           />
           <TouchableOpacity onPress={() => setShow(!showPass)}>
             <Icon
@@ -48,7 +70,12 @@ const SignUpScreen = props => {
             secureTextEntry={showPass}
           />
         </View>
-        <TouchableOpacity style={styles.btn}>
+        <TouchableOpacity
+          style={styles.btn}
+          onPress={() => {
+            submit(email, pass);
+            // alert(email);
+          }}>
           <Text style={{color: Colors.white, fontSize: 17}}>Đăng ký</Text>
         </TouchableOpacity>
 
@@ -79,7 +106,10 @@ const SignUpScreen = props => {
         </View>
         <View style={styles.txtFooter}>
           <Text style={styles.txt1}>Bạn đã có tài khoản? </Text>
-          <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('SignIn');
+            }}>
             <Text style={styles.txt2}>Đăng nhập</Text>
           </TouchableOpacity>
         </View>
@@ -129,10 +159,8 @@ const styles = StyleSheet.create({
   },
   txtFooter: {
     flexDirection: 'row',
-    marginTop: 30,
+    marginTop: 90,
     alignSelf: 'center',
-    position: 'absolute',
-    bottom: 20,
   },
   txt1: {
     fontSize: 15,
@@ -172,7 +200,5 @@ const styles = StyleSheet.create({
   },
   passIcon: {
     top: 12,
-
-    // marginRight: 5,
   },
 });

@@ -6,6 +6,7 @@ import Profile from './Profile';
 import Search from './Search';
 import SignInScreen from './Auth/SignInScreen';
 import SignUpScreen from './Auth/SignUpScreen';
+import SplashScreen from './SplashScreen';
 
 export {
   Home,
@@ -16,4 +17,5 @@ export {
   Search,
   SignInScreen,
   SignUpScreen,
+  SplashScreen,
 };

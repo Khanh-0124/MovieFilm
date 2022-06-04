@@ -8,6 +8,7 @@ import {
   Search,
   SignUpScreen,
   SignInScreen,
+  SplashScreen,
 } from '../screens/Index';
 
 const Stack = createStackNavigator();
@@ -15,6 +16,13 @@ const Stack = createStackNavigator();
 const StackScreen = () => {
   return (
     <Stack.Navigator>
+      <Stack.Screen
+        name="Flash"
+        component={SplashScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
       <Stack.Screen
         name="SignIn"
         component={SignInScreen}
