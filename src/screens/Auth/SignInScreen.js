@@ -12,11 +12,26 @@ import {Colors} from '../../global/Styles';
 import FormInput from '../../components/FormInput';
 import {Icon} from 'react-native-elements';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import auth from '@react-native-firebase/auth';
 
 const SignInScreen = props => {
   const {navigation} = props;
+  const [email, setEmail] = useState('');
+  const [pass, setPass] = useState('');
+  // const [confirmPass, setConfirmPass] = useState('');
   const [showPass, setShow] = useState(true);
   // const {login} = useContext(AuthProvider);
+  const submit = () => {
+    auth()
+      .signInWithEmailAndPassword(email, pass)
+      .then(user => {
+        alert(user.user.email);
+        navigation.navigate('Home', {name: user.user.email});
+      })
+      .catch(e => {
+        alert(e);
+      });
+  };
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -24,7 +39,12 @@ const SignInScreen = props => {
         <Text style={styles.title}>Đăng nhập</Text>
         <View style={styles.input}>
           <Icon name="email" style={styles.emailIcon} />
-          <FormInput placeholder="Email đăng nhập" width={215} />
+          <FormInput
+            placeholder="Email đăng nhập"
+            width={215}
+            value={email}
+            onChangeText={a => setEmail(a)}
+          />
         </View>
         <View style={styles.input}>
           <Icon name="lock" style={styles.emailIcon} />
@@ -32,6 +52,8 @@ const SignInScreen = props => {
             placeholder="Mật khẩu"
             secureTextEntry={showPass}
             width={190}
+            value={pass}
+            onChangeText={a => setPass(a)}
           />
           <TouchableOpacity onPress={() => setShow(!showPass)}>
             <Icon
@@ -44,9 +66,7 @@ const SignInScreen = props => {
         <View>
           <Text style={styles.txtForgetPass}>Quên mật khẩu?</Text>
         </View>
-        <TouchableOpacity
-          style={styles.btn}
-          onPress={() => navigation.navigate('Home')}>
+        <TouchableOpacity style={styles.btn} onPress={submit}>
           <Text style={{color: Colors.white, fontSize: 17}}>Đăng nhập</Text>
         </TouchableOpacity>
         <View

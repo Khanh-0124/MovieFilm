@@ -6,6 +6,7 @@ import {
   Keyboard,
   TouchableOpacity,
   Image,
+  ToastAndroid,
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
 import {Colors} from '../../global/Styles';
@@ -18,6 +19,7 @@ const SignUpScreen = props => {
   const [showPass, setShow] = useState(true);
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
+  const [confirmPass, setConfirmPass] = useState('');
 
   const submit = (email, pass) => {
     auth()
@@ -25,7 +27,14 @@ const SignUpScreen = props => {
       .then(user => {
         // const User = user.user;
         // console.log(User.email);
-        alert({email});
+        setEmail('');
+        setPass('');
+        setConfirmPass('');
+        ToastAndroid.showWithGravity(
+          'Đăng ký thành công',
+          ToastAndroid.CENTER,
+          ToastAndroid.SHORT,
+        );
       })
       .catch(e => {
         alert(e);
@@ -68,6 +77,8 @@ const SignUpScreen = props => {
             placeholder="Xác nhận mật khẩu"
             width={215}
             secureTextEntry={showPass}
+            value={confirmPass}
+            onChangeText={a => setConfirmPass(a)}
           />
         </View>
         <TouchableOpacity
