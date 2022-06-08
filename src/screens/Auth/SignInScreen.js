@@ -12,6 +12,7 @@ import {Colors} from '../../global/Styles';
 import FormInput from '../../components/FormInput';
 import {Icon} from 'react-native-elements';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import ModalForm from '../../components/ModalForm';
 import auth from '@react-native-firebase/auth';
 
 const SignInScreen = props => {
@@ -20,6 +21,11 @@ const SignInScreen = props => {
   const [pass, setPass] = useState('');
   // const [confirmPass, setConfirmPass] = useState('');
   const [showPass, setShow] = useState(true);
+  const [modal, setModal] = useState(false);
+  const [isModalVisitable, setIsModalVisitable] = useState(false);
+  const changeModalVisible = bool => {
+    setIsModalVisitable(bool);
+  };
   // const {login} = useContext(AuthProvider);
   const submit = () => {
     auth()
@@ -63,9 +69,15 @@ const SignInScreen = props => {
             />
           </TouchableOpacity>
         </View>
-        <View>
+        <TouchableOpacity onPress={() => changeModalVisible(true)}>
           <Text style={styles.txtForgetPass}>Quên mật khẩu?</Text>
-        </View>
+          <ModalForm
+            changeModalVisible={changeModalVisible}
+            isModalVisitable={isModalVisitable}
+            title={'Điền địa chỉ email đã đăng ký'}
+            email={email}
+          />
+        </TouchableOpacity>
         <TouchableOpacity style={styles.btn} onPress={submit}>
           <Text style={{color: Colors.white, fontSize: 17}}>Đăng nhập</Text>
         </TouchableOpacity>

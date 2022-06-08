@@ -10,12 +10,13 @@ import {
   SignInScreen,
   SplashScreen,
 } from '../screens/Index';
+import ModalForm from './ModalForm';
 
 const Stack = createStackNavigator();
 
 const StackScreen = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator initialRouteName="SignIn">
       <Stack.Screen
         name="Flash"
         component={SplashScreen}
