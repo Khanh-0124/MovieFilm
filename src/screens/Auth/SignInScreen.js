@@ -60,6 +60,7 @@ const SignInScreen = props => {
             width={190}
             value={pass}
             onChangeText={a => setPass(a)}
+            style={{flex: 2}}
           />
           <TouchableOpacity onPress={() => setShow(!showPass)}>
             <Icon
@@ -196,6 +197,7 @@ const styles = StyleSheet.create({
   emailIcon: {
     top: 12,
     marginRight: 5,
+    flex: 1,
   },
   passIcon: {
     top: 12,
